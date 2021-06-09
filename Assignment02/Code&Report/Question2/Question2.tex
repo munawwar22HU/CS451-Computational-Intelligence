@@ -1,0 +1,77 @@
+%%This is a very basic article template.
+%%There is just one section and two subsections.
+\documentclass[a4paper]{article}
+\usepackage[pdftex]{graphicx}
+\usepackage{parskip}
+\usepackage{hyperref}
+\usepackage[all]{hypcap}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+\title{Habib University \\ CS 451  - Computational Intelligence\\ Spring 2021 \\ Optimisation  and Swarm Intelligence\\Assignment  - 02}
+
+\author{Syed Muhammad Fasih Hussain (sh05204) \\Muhammad Munawwar Anwar(ma04289)}
+\date{\today}
+\newcommand{\mat}[1]{\boldsymbol { \mathsf{#1}} }
+
+\begin{document}
+\setlength{\parskip}{10pt}
+\setlength{\parindent}{0pt}
+\DeclareGraphicsExtensions{.pdf,.png,.gif,.jpg}
+\maketitle
+%What is a metaheuristic optimization
+\section*{What is metaheuristic optimisation ?}
+Metaheuristic Optimisation deals with metaheuristic algorithms. Heuristic means to find or discover by trial and error. Meta means beyond or high level. 
+Metaheuristic can be considered as a``master strategy  that guides and modifies other heuristics to produce solutions beyond those that are normally genrated 
+in quest for a local optimality ''.In  addition, all metaheuristic algorithms use a certain trandoff of randomization and local search. Quality solutions 
+to difficult optimization problems can be found in a reasonable amount of time, but is no garruntee that optimal solutions can be reached. \\
+
+
+There are two major components in any metaheuristic algorithm: exploration and exploitation. Exploration means to generate diverse solutions so as to 
+explore the search space on a global scale. On the other hand, exploitation means to focus the search in a local region knowing that a
+current good solution is found in this region. There should be a balance between exploration and exploitation during the selection of the best 
+solutions to improve the rate of algorithm convergence. Selection of the best ensures that solutions will converge to the optimum, 
+while diversification via randomization allows the search to escape from local optima, thereby increasing the diversity of solutions. All in all, a good combination
+of these major components will ensure that optimality is achievable.
+
+
+
+
+% What are the situations in which gradient based optimization techniques do not work?
+\section*{What are the situations in which gradient based optimisation does not work ?}
+In simple terms, optimisation can be considered as a minimization or maximisation problem. In general, if a function $f(x)$ is simple enough, we can use $f^{\prime}(x)$ to determine the potential locations, 
+and use the second derivative $f^{\prime\prime}(x)$ to verify if the solution is a maximum or minimum. However, for nonlinear,multimodal,multivariate functions it may be computationally expensive to calculate 
+derivatives accurately. In addition, some functions may have discontinuties, and thus derivate information is not easy to obtain. Consequently, if the objective function is not linear, gradient optimisation cannot
+be used. 
+
+
+\section*{Firefly Algorithm}
+
+The Firefly Algorithm was developed by Xin-She Yang and is based on the flashing patterns and behaviours of fireflies.
+The Firefly Algorithm is based on the following three assumptions :
+\begin{itemize}
+    \item Fireflies are unisex so that one firefly will be attracted to other fireflies regardless of their sex\
+    \item The attractiveness is proportional to the brightness and both decrease as the distance between two fireflies increases.Thus for any two flashing fireflies, the brighter firefly will attract the other one. If neither one is brighter, then a random is performed.
+    \item The brightness of a firefly is determined by the landscape of the objective function.
+\end{itemize}
+
+The variation of attractiveness $\beta$ with distance $r$ is given by the following
+\begin{equation}
+    \beta = \beta_{0} e^{-\gamma r^2}
+\end{equation} 
+where $\beta_{0} $ is the attractiveness at distance $r=0$
+
+The movement of a firefly $i$ attracted to an another more brighter firefly $j$, is determined by 
+\begin{equation}
+    x_{i}^{t+1} = x_{i}^{t}  + \beta_{0} e^{-\gamma r_{ij}^{2} }(x_{j}^{t} - x_{i}^{t}) + \alpha e_{i ^ t}
+\end{equation}
+
+where $x_{i}^{t}$ is the position of firefly $i$ at time $t$, $\beta_{0} e^{-\gamma r_{ij}^{2} }$ is the attraction between the two firflies, $\alpha$ is a randomization parameter and $e_{i}^{t}$ is a vector of random numbers
+drawn from a uniform of Gaussian distrubution. If $\beta_{0} = 0$, then it is just becomes a  random walk.
+
+
+
+
+\end{document}
